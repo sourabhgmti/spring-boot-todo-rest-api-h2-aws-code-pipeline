@@ -1,0 +1,55 @@
+2020-06-20 16:10:54,905 CRIT Supervisor running as root (no user in config file)
+2020-06-20 16:10:54,905 WARN Included extra file "/etc/supervisor/conf.d/application.conf" during parsing
+2020-06-20 16:10:54,905 WARN Included extra file "/etc/supervisor/conf.d/containerlistener.conf" during parsing
+2020-06-20 16:10:54,958 INFO RPC interface 'supervisor' initialized
+2020-06-20 16:10:54,958 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-06-20 16:10:54,958 INFO supervisord started with pid 3238
+2020-06-20 16:10:55,961 INFO spawned: 'supervisor_listener' with pid 3309
+2020-06-20 16:10:55,963 INFO spawned: 'application-web-1' with pid 3310
+2020-06-20 16:10:57,508 INFO success: supervisor_listener entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-20 16:10:57,508 INFO success: application-web-1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-20 16:13:39,657 INFO waiting for application-web-1 to stop
+2020-06-20 16:13:39,978 INFO stopped: application-web-1 (exit status 143)
+2020-06-20 16:13:41,230 INFO waiting for supervisor_listener to stop
+2020-06-20 16:13:41,231 INFO stopped: supervisor_listener (terminated by SIGQUIT)
+2020-06-20 16:13:42,249 WARN received SIGTERM indicating exit request
+2020-06-20 16:13:45,583 CRIT Supervisor running as root (no user in config file)
+2020-06-20 16:13:45,584 WARN Included extra file "/etc/supervisor/conf.d/application.conf" during parsing
+2020-06-20 16:13:45,584 WARN Included extra file "/etc/supervisor/conf.d/containerlistener.conf" during parsing
+2020-06-20 16:13:45,631 INFO RPC interface 'supervisor' initialized
+2020-06-20 16:13:45,632 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-06-20 16:13:45,632 INFO supervisord started with pid 3634
+2020-06-20 16:13:46,635 INFO spawned: 'supervisor_listener' with pid 3705
+2020-06-20 16:13:46,636 INFO spawned: 'application-web-1' with pid 3706
+2020-06-20 16:13:48,254 INFO success: supervisor_listener entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-20 16:13:48,254 INFO success: application-web-1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-20 16:45:39,080 INFO waiting for application-web-1 to stop
+2020-06-20 16:45:39,161 INFO stopped: application-web-1 (exit status 143)
+2020-06-20 16:45:40,416 INFO waiting for supervisor_listener to stop
+2020-06-20 16:45:40,417 INFO stopped: supervisor_listener (terminated by SIGQUIT)
+2020-06-20 16:45:41,436 WARN received SIGTERM indicating exit request
+2020-06-20 16:45:42,640 CRIT Supervisor running as root (no user in config file)
+2020-06-20 16:45:42,640 WARN Included extra file "/etc/supervisor/conf.d/application.conf" during parsing
+2020-06-20 16:45:42,640 WARN Included extra file "/etc/supervisor/conf.d/containerlistener.conf" during parsing
+2020-06-20 16:45:42,694 INFO RPC interface 'supervisor' initialized
+2020-06-20 16:45:42,694 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-06-20 16:45:42,694 INFO supervisord started with pid 4927
+2020-06-20 16:45:43,697 INFO spawned: 'supervisor_listener' with pid 4998
+2020-06-20 16:45:43,699 INFO spawned: 'application-web-1' with pid 4999
+2020-06-20 16:45:45,320 INFO success: supervisor_listener entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-20 16:45:45,320 INFO success: application-web-1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-20 17:13:00,223 INFO waiting for application-web-1 to stop
+2020-06-20 17:13:00,316 INFO stopped: application-web-1 (exit status 143)
+2020-06-20 17:13:01,658 INFO waiting for supervisor_listener to stop
+2020-06-20 17:13:01,659 INFO stopped: supervisor_listener (terminated by SIGQUIT)
+2020-06-20 17:13:02,678 WARN received SIGTERM indicating exit request
+2020-06-20 17:13:03,837 CRIT Supervisor running as root (no user in config file)
+2020-06-20 17:13:03,837 WARN Included extra file "/etc/supervisor/conf.d/application.conf" during parsing
+2020-06-20 17:13:03,837 WARN Included extra file "/etc/supervisor/conf.d/containerlistener.conf" during parsing
+2020-06-20 17:13:03,888 INFO RPC interface 'supervisor' initialized
+2020-06-20 17:13:03,888 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-06-20 17:13:03,888 INFO supervisord started with pid 6174
+2020-06-20 17:13:04,891 INFO spawned: 'supervisor_listener' with pid 6245
+2020-06-20 17:13:04,893 INFO spawned: 'application-web-1' with pid 6246
+2020-06-20 17:13:06,511 INFO success: supervisor_listener entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-20 17:13:06,511 INFO success: application-web-1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

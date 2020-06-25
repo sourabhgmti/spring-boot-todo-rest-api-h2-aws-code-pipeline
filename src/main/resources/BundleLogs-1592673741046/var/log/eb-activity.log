@@ -1,0 +1,1075 @@
+[2020-06-20T16:10:02.377Z] INFO  [2832]  - [Initialization] : Starting activity...
+[2020-06-20T16:10:02.377Z] INFO  [2832]  - [Initialization/AddonsBefore] : Starting activity...
+[2020-06-20T16:10:02.377Z] INFO  [2832]  - [Initialization/AddonsBefore/InstallCWLAgent] : Starting activity...
+[2020-06-20T16:10:02.377Z] INFO  [2832]  - [Initialization/AddonsBefore/InstallCWLAgent/01-install-cwl-agent.sh] : Starting activity...
+[2020-06-20T16:10:06.247Z] INFO  [2832]  - [Initialization/AddonsBefore/InstallCWLAgent/01-install-cwl-agent.sh] : Completed activity. Result:
+  + grep -iq 'Amazon Linux' /etc/issue
+  + yum install -y awslogs
+  Loaded plugins: priorities, update-motd, upgrade-helper
+  Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
+  Resolving Dependencies
+  --> Running transaction check
+  ---> Package awslogs.noarch 0:1.1.4-1.12.amzn1 will be installed
+  --> Processing Dependency: aws-cli-plugin-cloudwatch-logs(python27) for package: awslogs-1.1.4-1.12.amzn1.noarch
+  --> Running transaction check
+  ---> Package aws-cli-plugin-cloudwatch-logs.noarch 0:1.4.6-1.17.amzn1 will be installed
+  --> Finished Dependency Resolution
+  
+  Dependencies Resolved
+  
+  ================================================================================
+   Package                         Arch    Version            Repository     Size
+  ================================================================================
+  Installing:
+   awslogs                         noarch  1.1.4-1.12.amzn1   amzn-main     9.2 k
+  Installing for dependencies:
+   aws-cli-plugin-cloudwatch-logs  noarch  1.4.6-1.17.amzn1   amzn-updates   72 k
+  
+  Transaction Summary
+  ================================================================================
+  Install  1 Package (+1 Dependent package)
+  
+  Total download size: 81 k
+  Installed size: 246 k
+  Downloading packages:
+  --------------------------------------------------------------------------------
+  Total                                              623 kB/s |  81 kB  00:00     
+  Running transaction check
+  Running transaction test
+  Transaction test succeeded
+  Running transaction
+    Installing : aws-cli-plugin-cloudwatch-logs-1.4.6-1.17.amzn1.noarch       1/2 
+    Installing : awslogs-1.1.4-1.12.amzn1.noarch                              2/2 
+    Verifying  : awslogs-1.1.4-1.12.amzn1.noarch                              1/2 
+    Verifying  : aws-cli-plugin-cloudwatch-logs-1.4.6-1.17.amzn1.noarch       2/2 
+  
+  Installed:
+    awslogs.noarch 0:1.1.4-1.12.amzn1                                             
+  
+  Dependency Installed:
+    aws-cli-plugin-cloudwatch-logs.noarch 0:1.4.6-1.17.amzn1                      
+  
+  Complete!
+  + cat
+  ++ sed 's/.$//'
+  ++ curl 169.254.169.254/latest/meta-data/placement/availability-zone
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
+    0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    10  100    10    0     0   5000      0 --:--:-- --:--:-- --:--:--  5000
+  + region=us-east-1
+  + sed -i -e 's/region = .*/region = us-east-1/g' /etc/awslogs/awscli.conf
+  + /opt/elasticbeanstalk/bin/log-conf -n awslogs -l/var/log/awslogs.log
+[2020-06-20T16:10:06.248Z] INFO  [2832]  - [Initialization/AddonsBefore/InstallCWLAgent] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logstreaming/hooks/install.
+[2020-06-20T16:10:06.248Z] INFO  [2832]  - [Initialization/AddonsBefore] : Completed activity.
+[2020-06-20T16:10:06.248Z] INFO  [2832]  - [Initialization/PreInitStage0] : Starting activity...
+[2020-06-20T16:10:06.248Z] INFO  [2832]  - [Initialization/PreInitStage0/DownloadSourceBundle] : Starting activity...
+[2020-06-20T16:10:10.462Z] INFO  [2832]  - [Initialization/PreInitStage0/DownloadSourceBundle] : Completed activity. Result:
+  [2020-06-20T16:10:06.357Z] INFO  [2904]  : Application version will be saved to /opt/elasticbeanstalk/deploy/appsource.
+  [2020-06-20T16:10:06.357Z] INFO  [2904]  : Using manifest cache with deployment ID 1 and serial 1.
+  [2020-06-20T16:10:06.357Z] INFO  [2904]  : Attempting to download application source bundle to: '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+  [2020-06-20T16:10:06.357Z] INFO  [2904]  : Using computed s3 key.
+  [2020-06-20T16:10:06.487Z] INFO  [2904]  : Downloading from bucket 'elasticbeanstalk-us-east-1-719690574295' with key 'resources/environments/e-gd8mdnwbh7/_runtime/_versions/Spring-REST-API/Sample Application' and version '' to '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+  [2020-06-20T16:10:10.227Z] INFO  [2904]  : Size: 8226917, ETag: "fab80e6f09af67083632433d10d86351", Metadata: {"environmentid"=>"e-gd8mdnwbh7", "requestid"=>"46b29d76-56c1-49bb-8f01-9ebf9fd027cf"}.
+  [2020-06-20T16:10:10.454Z] INFO  [2904]  : Downloaded size: 8226917.
+  [2020-06-20T16:10:10.454Z] INFO  [2904]  : Successfully downloaded to '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+[2020-06-20T16:10:10.463Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook] : Starting activity...
+[2020-06-20T16:10:10.463Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook/01_install_dependencies.sh] : Starting activity...
+[2020-06-20T16:10:10.561Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook/01_install_dependencies.sh] : Completed activity.
+[2020-06-20T16:10:10.562Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook/01_install_procfile.sh] : Starting activity...
+[2020-06-20T16:10:10.702Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook/01_install_procfile.sh] : Completed activity.
+[2020-06-20T16:10:10.702Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook/01_install_proxy.sh] : Starting activity...
+[2020-06-20T16:10:10.804Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook/01_install_proxy.sh] : Completed activity.
+[2020-06-20T16:10:10.804Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook/01_install_xray_daemon.sh] : Starting activity...
+[2020-06-20T16:10:10.918Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook/01_install_xray_daemon.sh] : Completed activity. Result:
+  Executing: /bin/chown -R xray:xray /var/log/xray
+  
+[2020-06-20T16:10:10.918Z] INFO  [2832]  - [Initialization/PreInitStage0/PreInitHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/preinit.
+[2020-06-20T16:10:10.918Z] INFO  [2832]  - [Initialization/PreInitStage0] : Completed activity. Result:
+  Initialization - Command CMD-PreInit stage 0 completed
+[2020-06-20T16:10:10.918Z] INFO  [2832]  - [Initialization/AddonsAfter] : Starting activity...
+[2020-06-20T16:10:10.918Z] INFO  [2832]  - [Initialization/AddonsAfter] : Completed activity.
+[2020-06-20T16:10:10.918Z] INFO  [2832]  - [Initialization] : Completed activity. Result:
+  Initialization - Command CMD-PreInit succeeded
+[2020-06-20T16:10:31.271Z] INFO  [3034]  - [Application deployment Sample Application@1] : Starting activity...
+[2020-06-20T16:10:31.271Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsBefore] : Starting activity...
+[2020-06-20T16:10:31.271Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsBefore/ConfigCWLAgent] : Starting activity...
+[2020-06-20T16:10:31.271Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsBefore/ConfigCWLAgent/10-config.sh] : Starting activity...
+[2020-06-20T16:10:31.403Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsBefore/ConfigCWLAgent/10-config.sh] : Completed activity. Result:
+  Log streaming option setting is not specified, ignore cloudwatch logs setup.
+  
+  Disabled log streaming.
+[2020-06-20T16:10:31.403Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsBefore/ConfigCWLAgent] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logstreaming/hooks/config.
+[2020-06-20T16:10:31.403Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsBefore] : Completed activity.
+[2020-06-20T16:10:31.816Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0] : Starting activity...
+[2020-06-20T16:10:31.816Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/HealthdLogRotation] : Starting activity...
+[2020-06-20T16:10:31.822Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/HealthdLogRotation] : Completed activity. Result:
+  ["/etc/cron.hourly/cron.logrotate.elasticbeanstalk.healthd.conf"]
+[2020-06-20T16:10:31.822Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/HealthdHTTPDLogging] : Starting activity...
+[2020-06-20T16:10:31.822Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/HealthdHTTPDLogging] : Completed activity.
+[2020-06-20T16:10:31.822Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/HealthdNginxLogging] : Starting activity...
+[2020-06-20T16:10:31.822Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/HealthdNginxLogging] : Completed activity.
+[2020-06-20T16:10:31.822Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPreBuild] : Starting activity...
+[2020-06-20T16:10:32.235Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild] : Starting activity...
+[2020-06-20T16:10:32.238Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild/prebuild_0_Spring_REST_API] : Starting activity...
+[2020-06-20T16:10:32.239Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild/prebuild_0_Spring_REST_API] : Completed activity.
+[2020-06-20T16:10:32.239Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild] : Completed activity.
+[2020-06-20T16:10:32.258Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPreBuild] : Completed activity.
+[2020-06-20T16:10:32.258Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/AppDeployPreHook] : Starting activity...
+[2020-06-20T16:10:32.258Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/AppDeployPreHook/01_configure_application.sh] : Starting activity...
+[2020-06-20T16:10:50.343Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/AppDeployPreHook/01_configure_application.sh] : Completed activity. Result:
+  Executing: /usr/bin/unzip -o -d /var/app/staging /opt/elasticbeanstalk/deploy/appsource/source_bundle
+  FileMagic v0.7.1: compiled magic version [5.21] does not match with shared library magic version [5.37]
+  Archive:  /opt/elasticbeanstalk/deploy/appsource/source_bundle
+     creating: /var/app/staging/.ebextensions/
+    inflating: /var/app/staging/.ebextensions/xray.config  
+    inflating: /var/app/staging/build.gradle  
+    inflating: /var/app/staging/Buildfile  
+    inflating: /var/app/staging/cron.yaml  
+     creating: /var/app/staging/lib/
+    inflating: /var/app/staging/lib/aws-java-sdk-core-1.11.67.jar  
+    inflating: /var/app/staging/lib/aws-java-sdk-kms-1.11.67.jar  
+    inflating: /var/app/staging/lib/aws-java-sdk-s3-1.11.67.jar  
+    inflating: /var/app/staging/lib/aws-xray-recorder-sdk-aws-sdk-1.0.5-beta.jar  
+    inflating: /var/app/staging/lib/aws-xray-recorder-sdk-core-1.0.5-beta.jar  
+    inflating: /var/app/staging/lib/commons-beanutils-1.9.2.jar  
+    inflating: /var/app/staging/lib/commons-codec-1.9.jar  
+    inflating: /var/app/staging/lib/commons-collections-3.2.2.jar  
+    inflating: /var/app/staging/lib/commons-digester-1.8.1.jar  
+    inflating: /var/app/staging/lib/commons-logging-1.2.jar  
+    inflating: /var/app/staging/lib/commons-validator-1.5.1.jar  
+    inflating: /var/app/staging/lib/httpclient-4.5.2.jar  
+    inflating: /var/app/staging/lib/httpcore-4.4.4.jar  
+    inflating: /var/app/staging/lib/ion-java-1.0.1.jar  
+    inflating: /var/app/staging/lib/jackson-annotations-2.6.0.jar  
+    inflating: /var/app/staging/lib/jackson-core-2.6.6.jar  
+    inflating: /var/app/staging/lib/jackson-databind-2.6.6.jar  
+    inflating: /var/app/staging/lib/jackson-dataformat-cbor-2.6.6.jar  
+    inflating: /var/app/staging/lib/javax.servlet-api-3.1.0.jar  
+    inflating: /var/app/staging/lib/jetty-continuation-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-http-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-io-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-security-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-server-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-servlet-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-servlets-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-util-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-webapp-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jetty-xml-9.4.0.RC2.jar  
+    inflating: /var/app/staging/lib/jmespath-java-1.0.jar  
+    inflating: /var/app/staging/lib/joda-time-2.8.1.jar  
+    inflating: /var/app/staging/Procfile  
+     creating: /var/app/staging/src/
+     creating: /var/app/staging/src/main/
+     creating: /var/app/staging/src/main/java/
+     creating: /var/app/staging/src/main/java/org/
+     creating: /var/app/staging/src/main/java/org/example/
+    inflating: /var/app/staging/src/main/java/org/example/Application.java  
+     creating: /var/app/staging/src/main/resources/
+    inflating: /var/app/staging/src/main/resources/index_default.html  
+    inflating: /var/app/staging/src/main/resources/index_xray.html  
+  Executing: HOME=/tmp /opt/elasticbeanstalk/lib/ruby/bin/ruby /opt/elasticbeanstalk/lib/ruby/bin/foreman start --procfile /tmp/d20200620-3079-ws5rz7/eb-buildtask-0 --root /var/app/staging --env /var/elasticbeanstalk/staging/elasticbeanstalk.env
+  16:10:32 build.1 | started with pid 3092
+  16:10:42 build.1 | :compileJava
+  16:10:42 build.1 | :processResources
+  16:10:42 build.1 | :classes
+  16:10:49 build.1 | :jar
+  16:10:49 build.1 | :assemble
+  16:10:49 build.1 | :compileTestJava UP-TO-DATE
+  16:10:49 build.1 | :processTestResources UP-TO-DATE
+  16:10:49 build.1 | :testClasses UP-TO-DATE
+  16:10:49 build.1 | :test UP-TO-DATE
+  16:10:49 build.1 | :check UP-TO-DATE
+  16:10:49 build.1 | :build
+  16:10:49 build.1 | 
+  16:10:49 build.1 | BUILD SUCCESSFUL
+  16:10:49 build.1 | 
+  16:10:49 build.1 | Total time: 16.562 secs
+  16:10:49 build.1 | 
+  16:10:49 build.1 | This build could be faster, please consider using the Gradle Daemon: https://docs.gradle.org/2.7/userguide/gradle_daemon.html
+  16:10:50 build.1 | exited with code 0
+  16:10:50 system  | sending SIGTERM to all processes
+  Executing: HOME=/tmp /opt/elasticbeanstalk/lib/ruby/bin/ruby /opt/elasticbeanstalk/lib/ruby/bin/foreman export supervisord --procfile /var/app/staging/Procfile --root /var/app/current --app application --log /var/log/ --user webapp --template /opt/elasticbeanstalk/private/config/foreman/supervisord --env /var/elasticbeanstalk/staging/elasticbeanstalk.env /var/elasticbeanstalk/staging/supervisor
+  [foreman export] writing: application.conf
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n supervisor -l'/var/log/supervisord.log' -t bundlelogs
+  
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n containerlistener -l'/var/log/eb-container-listener.log' -t bundlelogs
+  
+[2020-06-20T16:10:50.344Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/AppDeployPreHook/01_configure_xray.sh] : Starting activity...
+[2020-06-20T16:10:50.518Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/AppDeployPreHook/01_configure_xray.sh] : Completed activity. Result:
+  D, [2020-06-20T16:10:50.453547 #3139] DEBUG -- : Reading config file: /etc/elasticbeanstalk/.aws-eb-stack.properties
+  D, [2020-06-20T16:10:50.453717 #3139] DEBUG -- : Retrieving metadata for key: AWS::CloudFormation::Init||Infra-WriteApplication2||files..
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n awsxray -l'/var/log/xray/xray.log' -t publishlogs
+  
+[2020-06-20T16:10:50.518Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/AppDeployPreHook/03_configure_proxy.sh] : Starting activity...
+[2020-06-20T16:10:50.708Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/AppDeployPreHook/03_configure_proxy.sh] : Completed activity. Result:
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n nginx -l'/var/log/nginx/*'
+  
+  Executing: /usr/sbin/nginx -t -c /var/elasticbeanstalk/staging/nginx/nginx.conf
+  nginx: the configuration file /var/elasticbeanstalk/staging/nginx/nginx.conf syntax is ok
+  nginx: configuration file /var/elasticbeanstalk/staging/nginx/nginx.conf test is successful
+[2020-06-20T16:10:50.709Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/AppDeployPreHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/pre.
+[2020-06-20T16:10:50.709Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPostBuild] : Starting activity...
+[2020-06-20T16:10:51.121Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPostBuild/Infra-EmbeddedPostBuild] : Starting activity...
+[2020-06-20T16:10:51.121Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPostBuild/Infra-EmbeddedPostBuild] : Completed activity.
+[2020-06-20T16:10:51.138Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/EbExtensionPostBuild] : Completed activity.
+[2020-06-20T16:10:51.138Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/InfraCleanEbExtension] : Starting activity...
+[2020-06-20T16:10:51.159Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0/InfraCleanEbExtension] : Completed activity. Result:
+  Cleaned ebextensions subdirectories from /var/app/staging.
+[2020-06-20T16:10:51.159Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage0] : Completed activity. Result:
+  Application deployment - Command CMD-Startup stage 0 completed
+[2020-06-20T16:10:51.159Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1] : Starting activity...
+[2020-06-20T16:10:51.159Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook] : Starting activity...
+[2020-06-20T16:10:51.160Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/01_stop_before_promote.sh] : Starting activity...
+[2020-06-20T16:10:51.751Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/01_stop_before_promote.sh] : Completed activity. Result:
+  Executing: /usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf stop application:*
+  unix:///tmp/supervisor.sock no such file
+  Executing: /usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf stop all
+  unix:///tmp/supervisor.sock no such file
+  Executing: /sbin/status supervisord
+  supervisord stop/waiting
+[2020-06-20T16:10:51.752Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/01stop_xray.sh] : Starting activity...
+[2020-06-20T16:10:53.872Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/01stop_xray.sh] : Completed activity. Result:
+  Executing: if ( initctl status xray | grep start ); then initctl stop xray; fi
+  xray start/running, process 2246
+  xray stop/waiting
+[2020-06-20T16:10:53.873Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/02start_xray.sh] : Starting activity...
+[2020-06-20T16:10:53.994Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/02start_xray.sh] : Completed activity. Result:
+  Executing: initctl start xray
+  xray start/running, process 3196
+[2020-06-20T16:10:53.994Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/03_stop_proxy.sh] : Starting activity...
+[2020-06-20T16:10:54.133Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/03_stop_proxy.sh] : Completed activity. Result:
+  Executing: service nginx stop
+  
+[2020-06-20T16:10:54.134Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/05_promote_application.sh] : Starting activity...
+[2020-06-20T16:10:54.341Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/05_promote_application.sh] : Completed activity.
+[2020-06-20T16:10:54.341Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/07_start_application.sh] : Starting activity...
+[2020-06-20T16:10:54.458Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/07_start_application.sh] : Completed activity. Result:
+  Executing: /sbin/start supervisord
+  supervisord start/running, process 3238
+[2020-06-20T16:10:54.459Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/09_start_proxy.sh] : Starting activity...
+[2020-06-20T16:10:57.106Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/09_start_proxy.sh] : Completed activity. Result:
+  Executing: service nginx stop
+  
+  Executing: service nginx start
+  Starting nginx: [  OK  ]
+  Executing: /opt/elasticbeanstalk/bin/healthd-track-pidfile --proxy nginx
+  
+  Executing: /opt/elasticbeanstalk/bin/healthd-configure --appstat-log-path /var/log/nginx/healthd/application.log --appstat-unit sec --appstat-timestamp-on 'completion'
+  
+  Executing: /opt/elasticbeanstalk/bin/healthd-restart
+  
+[2020-06-20T16:10:57.106Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/11_stop_after_promote.sh] : Starting activity...
+[2020-06-20T16:10:57.527Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook/11_stop_after_promote.sh] : Completed activity.
+[2020-06-20T16:10:57.527Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployEnactHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/enact.
+[2020-06-20T16:10:57.527Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployPostHook] : Starting activity...
+[2020-06-20T16:10:57.527Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/AppDeployPostHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/post.
+[2020-06-20T16:10:57.527Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/PostInitHook] : Starting activity...
+[2020-06-20T16:10:57.527Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1/PostInitHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/postinit.
+[2020-06-20T16:10:57.528Z] INFO  [3034]  - [Application deployment Sample Application@1/StartupStage1] : Completed activity. Result:
+  Application deployment - Command CMD-Startup stage 1 completed
+[2020-06-20T16:10:57.528Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsAfter] : Starting activity...
+[2020-06-20T16:10:57.528Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsAfter/ConfigLogRotation] : Starting activity...
+[2020-06-20T16:10:57.528Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsAfter/ConfigLogRotation/10-config.sh] : Starting activity...
+[2020-06-20T16:10:57.963Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsAfter/ConfigLogRotation/10-config.sh] : Completed activity. Result:
+  Disabled forced hourly log rotation.
+[2020-06-20T16:10:57.964Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsAfter/ConfigLogRotation] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logpublish/hooks/config.
+[2020-06-20T16:10:57.964Z] INFO  [3034]  - [Application deployment Sample Application@1/AddonsAfter] : Completed activity.
+[2020-06-20T16:10:57.964Z] INFO  [3034]  - [Application deployment Sample Application@1] : Completed activity. Result:
+  Application deployment - Command CMD-Startup succeeded
+[2020-06-20T16:13:36.111Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2] : Starting activity...
+[2020-06-20T16:13:36.111Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsBefore] : Starting activity...
+[2020-06-20T16:13:36.111Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsBefore/ConfigCWLAgent] : Starting activity...
+[2020-06-20T16:13:36.111Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsBefore/ConfigCWLAgent/10-config.sh] : Starting activity...
+[2020-06-20T16:13:36.239Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsBefore/ConfigCWLAgent/10-config.sh] : Completed activity. Result:
+  Log streaming option setting is not specified, ignore cloudwatch logs setup.
+  
+  Disabled log streaming.
+[2020-06-20T16:13:36.239Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsBefore/ConfigCWLAgent] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logstreaming/hooks/config.
+[2020-06-20T16:13:36.239Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsBefore] : Completed activity.
+[2020-06-20T16:13:36.646Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0] : Starting activity...
+[2020-06-20T16:13:36.646Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/DownloadSourceBundle] : Starting activity...
+[2020-06-20T16:13:37.555Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/DownloadSourceBundle] : Completed activity. Result:
+  [2020-06-20T16:13:36.754Z] INFO  [3499]  : Application version will be saved to /opt/elasticbeanstalk/deploy/appsource.
+  [2020-06-20T16:13:36.755Z] INFO  [3499]  : Using manifest cache with deployment ID 2 and serial 2.
+  [2020-06-20T16:13:36.755Z] INFO  [3499]  : Attempting to download application source bundle to: '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+  [2020-06-20T16:13:36.755Z] INFO  [3499]  : Using computed s3 key.
+  [2020-06-20T16:13:36.881Z] INFO  [3499]  : Downloading from bucket 'elasticbeanstalk-us-east-1-719690574295' with key 'resources/environments/e-gd8mdnwbh7/_runtime/_versions/Spring-REST-API/01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT' and version '' to '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+  [2020-06-20T16:13:36.944Z] INFO  [3499]  : Size: 21251332, ETag: "d9174427ada2af30211b9356f13670d1", Metadata: {"environmentid"=>"e-gd8mdnwbh7", "requestid"=>"2452b91b-4830-43ef-afe7-b386ed6047d3"}.
+  [2020-06-20T16:13:37.547Z] INFO  [3499]  : Downloaded size: 21251332.
+  [2020-06-20T16:13:37.547Z] INFO  [3499]  : Successfully downloaded to '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+[2020-06-20T16:13:37.556Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/EbExtensionPreBuild] : Starting activity...
+[2020-06-20T16:13:37.968Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild] : Starting activity...
+[2020-06-20T16:13:37.969Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild] : Completed activity.
+[2020-06-20T16:13:37.986Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/EbExtensionPreBuild] : Completed activity.
+[2020-06-20T16:13:37.987Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/AppDeployPreHook] : Starting activity...
+[2020-06-20T16:13:37.987Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/AppDeployPreHook/01_configure_application.sh] : Starting activity...
+[2020-06-20T16:13:38.600Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/AppDeployPreHook/01_configure_application.sh] : Completed activity. Result:
+  Executing: /usr/bin/unzip -o -d /var/app/staging /opt/elasticbeanstalk/deploy/appsource/source_bundle
+  Archive:  /opt/elasticbeanstalk/deploy/appsource/source_bundle
+     creating: /var/app/staging/META-INF/
+    inflating: /var/app/staging/META-INF/MANIFEST.MF  
+     creating: /var/app/staging/org/
+     creating: /var/app/staging/org/springframework/
+     creating: /var/app/staging/org/springframework/boot/
+     creating: /var/app/staging/org/springframework/boot/loader/
+     creating: /var/app/staging/org/springframework/boot/loader/data/
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$DataInputStream.class  
+     creating: /var/app/staging/org/springframework/boot/loader/jar/
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/AsciiBytes.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/ExecutableArchiveLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/LaunchedURLClassLoader$UseFastConnectionExceptionsEnumeration.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$FileAccess.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarEntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries$EntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/WarLauncher.class  
+     creating: /var/app/staging/org/springframework/boot/loader/util/
+    inflating: /var/app/staging/org/springframework/boot/loader/util/SystemPropertyUtils.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryFileHeader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessData.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/Bytes.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryEndRecord.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/ZipInflaterInputStream.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection$JarEntryName.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryParser.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/Handler.class  
+     creating: /var/app/staging/org/springframework/boot/loader/archive/
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive$EntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntryIterator$EntryComparator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive$EntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive$JarFileEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$PrefixMatchingArchiveFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$ArchiveEntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$2.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$JarFileType.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive$Entry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/MainMethodRunner.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/JarLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/Launcher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/LaunchedURLClassLoader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/FileHeader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/StringSequence.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryVisitor.class  
+     creating: /var/app/staging/BOOT-INF/
+     creating: /var/app/staging/BOOT-INF/classes/
+     creating: /var/app/staging/BOOT-INF/classes/com/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/
+     creating: /var/app/staging/META-INF/maven/
+     creating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/
+     creating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/01-spring-boot-hello-world-rest-api/
+    inflating: /var/app/staging/BOOT-INF/classes/application.properties  
+    inflating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/01-spring-boot-hello-world-rest-api/pom.xml  
+    inflating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/01-spring-boot-hello-world-rest-api/pom.properties  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/HelloWorldBean.class  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.class  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/HelloWorldController.class  
+     creating: /var/app/staging/BOOT-INF/lib/
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-web-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-logging-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/logback-classic-1.2.3.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/logback-core-1.2.3.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/log4j-to-slf4j-2.11.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/log4j-api-2.11.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jul-to-slf4j-1.7.25.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/javax.annotation-api-1.3.2.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/snakeyaml-1.23.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-json-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-databind-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-annotations-2.9.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-core-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-datatype-jdk8-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-datatype-jsr310-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-module-parameter-names-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-tomcat-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-core-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-el-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-websocket-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/hibernate-validator-6.0.13.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/validation-api-2.0.1.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jboss-logging-3.3.2.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/classmate-1.4.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-web-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-beans-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-webmvc-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-aop-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-context-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-expression-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-autoconfigure-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/h2-1.4.197.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-api-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-impl-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-runtime-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-core-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/txw2-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/istack-commons-runtime-3.0.5.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/stax-ex-1.7.8.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/FastInfoset-1.2.13.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/activation-1.1.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/slf4j-api-1.7.25.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-core-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-jcl-5.1.2.RELEASE.jar  
+  FileMagic v0.7.1: compiled magic version [5.21] does not match with shared library magic version [5.37]
+  Executing: HOME=/tmp /opt/elasticbeanstalk/lib/ruby/bin/ruby /opt/elasticbeanstalk/lib/ruby/bin/foreman export supervisord --procfile /var/app/staging/Procfile --root /var/app/current --app application --log /var/log/ --user webapp --template /opt/elasticbeanstalk/private/config/foreman/supervisord --env /var/elasticbeanstalk/staging/elasticbeanstalk.env /var/elasticbeanstalk/staging/supervisor
+  [foreman export] writing: application.conf
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n supervisor -l'/var/log/supervisord.log' -t bundlelogs
+  
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n containerlistener -l'/var/log/eb-container-listener.log' -t bundlelogs
+  
+[2020-06-20T16:13:38.600Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/AppDeployPreHook/01_configure_xray.sh] : Starting activity...
+[2020-06-20T16:13:38.712Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/AppDeployPreHook/01_configure_xray.sh] : Completed activity.
+[2020-06-20T16:13:38.712Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/AppDeployPreHook/03_configure_proxy.sh] : Starting activity...
+[2020-06-20T16:13:38.894Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/AppDeployPreHook/03_configure_proxy.sh] : Completed activity. Result:
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n nginx -l'/var/log/nginx/*'
+  
+  Executing: /usr/sbin/nginx -t -c /var/elasticbeanstalk/staging/nginx/nginx.conf
+  nginx: the configuration file /var/elasticbeanstalk/staging/nginx/nginx.conf syntax is ok
+  nginx: configuration file /var/elasticbeanstalk/staging/nginx/nginx.conf test is successful
+[2020-06-20T16:13:38.894Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/AppDeployPreHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/pre.
+[2020-06-20T16:13:38.894Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/EbExtensionPostBuild] : Starting activity...
+[2020-06-20T16:13:39.305Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/EbExtensionPostBuild/Infra-EmbeddedPostBuild] : Starting activity...
+[2020-06-20T16:13:39.306Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/EbExtensionPostBuild/Infra-EmbeddedPostBuild] : Completed activity.
+[2020-06-20T16:13:39.322Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/EbExtensionPostBuild] : Completed activity.
+[2020-06-20T16:13:39.322Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/InfraCleanEbextension] : Starting activity...
+[2020-06-20T16:13:39.323Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0/InfraCleanEbextension] : Completed activity. Result:
+  Cleaned ebextensions subdirectories from /var/app/staging.
+[2020-06-20T16:13:39.323Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage0] : Completed activity. Result:
+  Application update - Command CMD-AppDeploy stage 0 completed
+[2020-06-20T16:13:39.323Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1] : Starting activity...
+[2020-06-20T16:13:39.323Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook] : Starting activity...
+[2020-06-20T16:13:39.324Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/01_stop_before_promote.sh] : Starting activity...
+[2020-06-20T16:13:42.271Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/01_stop_before_promote.sh] : Completed activity. Result:
+  Executing: /usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf stop application:*
+  application:application-web-1: stopped
+  Executing: /usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf stop all
+  listener:supervisor_listener: stopped
+  Executing: /sbin/status supervisord
+  supervisord start/running, process 3238
+  Executing: /sbin/stop supervisord
+  supervisord stop/waiting
+[2020-06-20T16:13:42.271Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/01stop_xray.sh] : Starting activity...
+[2020-06-20T16:13:44.393Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/01stop_xray.sh] : Completed activity. Result:
+  Executing: if ( initctl status xray | grep start ); then initctl stop xray; fi
+  xray start/running, process 3196
+  xray stop/waiting
+[2020-06-20T16:13:44.393Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/02start_xray.sh] : Starting activity...
+[2020-06-20T16:13:44.507Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/02start_xray.sh] : Completed activity.
+[2020-06-20T16:13:44.507Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/03_stop_proxy.sh] : Starting activity...
+[2020-06-20T16:13:44.736Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/03_stop_proxy.sh] : Completed activity. Result:
+  Executing: service nginx stop
+  Stopping nginx: [  OK  ]
+[2020-06-20T16:13:44.736Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/05_promote_application.sh] : Starting activity...
+[2020-06-20T16:13:45.031Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/05_promote_application.sh] : Completed activity.
+[2020-06-20T16:13:45.032Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/07_start_application.sh] : Starting activity...
+[2020-06-20T16:13:45.146Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/07_start_application.sh] : Completed activity. Result:
+  Executing: /sbin/start supervisord
+  supervisord start/running, process 3634
+[2020-06-20T16:13:45.147Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/09_start_proxy.sh] : Starting activity...
+[2020-06-20T16:13:47.783Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/09_start_proxy.sh] : Completed activity. Result:
+  Executing: service nginx stop
+  
+  Executing: service nginx start
+  Starting nginx: [  OK  ]
+  Executing: /opt/elasticbeanstalk/bin/healthd-track-pidfile --proxy nginx
+  
+  Executing: /opt/elasticbeanstalk/bin/healthd-configure --appstat-log-path /var/log/nginx/healthd/application.log --appstat-unit sec --appstat-timestamp-on 'completion'
+  
+  Executing: /opt/elasticbeanstalk/bin/healthd-restart
+  
+[2020-06-20T16:13:47.783Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/11_stop_after_promote.sh] : Starting activity...
+[2020-06-20T16:13:48.360Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook/11_stop_after_promote.sh] : Completed activity.
+[2020-06-20T16:13:48.360Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployEnactHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/enact.
+[2020-06-20T16:13:48.361Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployPostHook] : Starting activity...
+[2020-06-20T16:13:48.361Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1/AppDeployPostHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/post.
+[2020-06-20T16:13:48.361Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AppDeployStage1] : Completed activity. Result:
+  Application version switch - Command CMD-AppDeploy stage 1 completed
+[2020-06-20T16:13:48.361Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsAfter] : Starting activity...
+[2020-06-20T16:13:48.361Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsAfter/ConfigLogRotation] : Starting activity...
+[2020-06-20T16:13:48.361Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsAfter/ConfigLogRotation/10-config.sh] : Starting activity...
+[2020-06-20T16:13:48.961Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsAfter/ConfigLogRotation/10-config.sh] : Completed activity. Result:
+  Disabled forced hourly log rotation.
+[2020-06-20T16:13:48.961Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsAfter/ConfigLogRotation] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logpublish/hooks/config.
+[2020-06-20T16:13:48.961Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2/AddonsAfter] : Completed activity.
+[2020-06-20T16:13:48.961Z] INFO  [3456]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@2] : Completed activity. Result:
+  Application update - Command CMD-AppDeploy succeeded
+[2020-06-20T16:26:54.881Z] INFO  [4154]  - [CMD-TailLogs] : Starting activity...
+[2020-06-20T16:26:54.881Z] INFO  [4154]  - [CMD-TailLogs/AddonsBefore] : Starting activity...
+[2020-06-20T16:26:54.881Z] INFO  [4154]  - [CMD-TailLogs/AddonsBefore] : Completed activity.
+[2020-06-20T16:26:54.881Z] INFO  [4154]  - [CMD-TailLogs/TailLogs] : Starting activity...
+[2020-06-20T16:26:54.881Z] INFO  [4154]  - [CMD-TailLogs/TailLogs/TailLogs] : Starting activity...
+[2020-06-20T16:26:55.068Z] INFO  [4154]  - [CMD-TailLogs/TailLogs/TailLogs] : Completed activity.
+[2020-06-20T16:26:55.069Z] INFO  [4154]  - [CMD-TailLogs/TailLogs] : Completed activity. Result:
+  CMD-TailLogs - stage 0 - Command CMD-TailLogs stage 0 completed
+[2020-06-20T16:26:55.069Z] INFO  [4154]  - [CMD-TailLogs/AddonsAfter] : Starting activity...
+[2020-06-20T16:26:55.069Z] INFO  [4154]  - [CMD-TailLogs/AddonsAfter] : Completed activity.
+[2020-06-20T16:26:55.069Z] INFO  [4154]  - [CMD-TailLogs] : Completed activity. Result:
+  CMD-TailLogs - Command CMD-TailLogs succeeded
+[2020-06-20T16:45:35.106Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3] : Starting activity...
+[2020-06-20T16:45:35.107Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsBefore] : Starting activity...
+[2020-06-20T16:45:35.107Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsBefore/ConfigCWLAgent] : Starting activity...
+[2020-06-20T16:45:35.107Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsBefore/ConfigCWLAgent/10-config.sh] : Starting activity...
+[2020-06-20T16:45:35.236Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsBefore/ConfigCWLAgent/10-config.sh] : Completed activity. Result:
+  Log streaming option setting is not specified, ignore cloudwatch logs setup.
+  
+  Disabled log streaming.
+[2020-06-20T16:45:35.236Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsBefore/ConfigCWLAgent] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logstreaming/hooks/config.
+[2020-06-20T16:45:35.236Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsBefore] : Completed activity.
+[2020-06-20T16:45:35.647Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0] : Starting activity...
+[2020-06-20T16:45:35.647Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/DownloadSourceBundle] : Starting activity...
+[2020-06-20T16:45:36.747Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/DownloadSourceBundle] : Completed activity. Result:
+  [2020-06-20T16:45:35.758Z] INFO  [4792]  : Application version will be saved to /opt/elasticbeanstalk/deploy/appsource.
+  [2020-06-20T16:45:35.759Z] INFO  [4792]  : Using manifest cache with deployment ID 3 and serial 3.
+  [2020-06-20T16:45:35.759Z] INFO  [4792]  : Attempting to download application source bundle to: '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+  [2020-06-20T16:45:35.759Z] INFO  [4792]  : Using computed s3 key.
+  [2020-06-20T16:45:35.890Z] INFO  [4792]  : Downloading from bucket 'elasticbeanstalk-us-east-1-719690574295' with key 'resources/environments/e-gd8mdnwbh7/_runtime/_versions/Spring-REST-API/02-todo-rest-api-h2-0.0.1-SNAPSHOT' and version '' to '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+  [2020-06-20T16:45:35.982Z] INFO  [4792]  : Size: 38137688, ETag: "fa893c2e835a67dcb829821b1a863dd1", Metadata: {"environmentid"=>"e-gd8mdnwbh7", "requestid"=>"e8b4e506-3f35-4731-9182-c34ac90e7103"}.
+  [2020-06-20T16:45:36.729Z] INFO  [4792]  : Downloaded size: 38137688.
+  [2020-06-20T16:45:36.729Z] INFO  [4792]  : Successfully downloaded to '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+[2020-06-20T16:45:36.747Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/EbExtensionPreBuild] : Starting activity...
+[2020-06-20T16:45:37.164Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild] : Starting activity...
+[2020-06-20T16:45:37.164Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild] : Completed activity.
+[2020-06-20T16:45:37.183Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/EbExtensionPreBuild] : Completed activity.
+[2020-06-20T16:45:37.183Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/AppDeployPreHook] : Starting activity...
+[2020-06-20T16:45:37.183Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/AppDeployPreHook/01_configure_application.sh] : Starting activity...
+[2020-06-20T16:45:37.983Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/AppDeployPreHook/01_configure_application.sh] : Completed activity. Result:
+  Executing: /usr/bin/unzip -o -d /var/app/staging /opt/elasticbeanstalk/deploy/appsource/source_bundle
+  Archive:  /opt/elasticbeanstalk/deploy/appsource/source_bundle
+     creating: /var/app/staging/META-INF/
+    inflating: /var/app/staging/META-INF/MANIFEST.MF  
+     creating: /var/app/staging/org/
+     creating: /var/app/staging/org/springframework/
+     creating: /var/app/staging/org/springframework/boot/
+     creating: /var/app/staging/org/springframework/boot/loader/
+     creating: /var/app/staging/org/springframework/boot/loader/data/
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$DataInputStream.class  
+     creating: /var/app/staging/org/springframework/boot/loader/jar/
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/AsciiBytes.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/ExecutableArchiveLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/LaunchedURLClassLoader$UseFastConnectionExceptionsEnumeration.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$FileAccess.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarEntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries$EntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/WarLauncher.class  
+     creating: /var/app/staging/org/springframework/boot/loader/util/
+    inflating: /var/app/staging/org/springframework/boot/loader/util/SystemPropertyUtils.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryFileHeader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessData.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/Bytes.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryEndRecord.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/ZipInflaterInputStream.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection$JarEntryName.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryParser.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/Handler.class  
+     creating: /var/app/staging/org/springframework/boot/loader/archive/
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive$EntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntryIterator$EntryComparator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive$EntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive$JarFileEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$PrefixMatchingArchiveFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$ArchiveEntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$2.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$JarFileType.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive$Entry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/MainMethodRunner.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/JarLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/Launcher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/LaunchedURLClassLoader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/FileHeader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/StringSequence.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryVisitor.class  
+     creating: /var/app/staging/BOOT-INF/
+     creating: /var/app/staging/BOOT-INF/classes/
+     creating: /var/app/staging/BOOT-INF/classes/com/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/helloworld/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/todo/
+     creating: /var/app/staging/META-INF/maven/
+     creating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/
+     creating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/02-todo-rest-api-h2/
+    inflating: /var/app/staging/BOOT-INF/classes/application.properties  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoJpaResource.class  
+    inflating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/02-todo-rest-api-h2/pom.properties  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.class  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/todo/Todo.class  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoJpaRepository.class  
+    inflating: /var/app/staging/BOOT-INF/classes/data.sql  
+    inflating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/02-todo-rest-api-h2/pom.xml  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldController.class  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.class  
+     creating: /var/app/staging/BOOT-INF/lib/
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-data-jpa-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-aop-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-aop-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/aspectjweaver-1.9.2.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-jdbc-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/HikariCP-3.2.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-jdbc-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/javax.transaction-api-1.3.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/hibernate-core-5.3.7.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jboss-logging-3.3.2.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/javax.persistence-api-2.2.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/javassist-3.23.1-GA.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/byte-buddy-1.9.3.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/antlr-2.7.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jandex-2.0.5.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/classmate-1.4.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/javax.activation-api-1.2.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/dom4j-2.1.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/hibernate-commons-annotations-5.0.4.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-data-jpa-2.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-data-commons-2.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-orm-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-context-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-tx-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-beans-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/slf4j-api-1.7.25.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-aspects-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-web-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-logging-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/logback-classic-1.2.3.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/logback-core-1.2.3.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/log4j-to-slf4j-2.11.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/log4j-api-2.11.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jul-to-slf4j-1.7.25.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/javax.annotation-api-1.3.2.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/snakeyaml-1.23.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-json-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-databind-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-annotations-2.9.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-core-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-datatype-jdk8-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-datatype-jsr310-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-module-parameter-names-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-tomcat-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-core-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-el-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-websocket-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/hibernate-validator-6.0.13.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/validation-api-2.0.1.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-web-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-webmvc-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-expression-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-autoconfigure-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/h2-1.4.197.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-api-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-impl-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-runtime-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-core-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/txw2-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/istack-commons-runtime-3.0.5.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/stax-ex-1.7.8.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/FastInfoset-1.2.13.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/activation-1.1.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-core-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-jcl-5.1.2.RELEASE.jar  
+  FileMagic v0.7.1: compiled magic version [5.21] does not match with shared library magic version [5.37]
+  Executing: HOME=/tmp /opt/elasticbeanstalk/lib/ruby/bin/ruby /opt/elasticbeanstalk/lib/ruby/bin/foreman export supervisord --procfile /var/app/staging/Procfile --root /var/app/current --app application --log /var/log/ --user webapp --template /opt/elasticbeanstalk/private/config/foreman/supervisord --env /var/elasticbeanstalk/staging/elasticbeanstalk.env /var/elasticbeanstalk/staging/supervisor
+  [foreman export] writing: application.conf
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n supervisor -l'/var/log/supervisord.log' -t bundlelogs
+  
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n containerlistener -l'/var/log/eb-container-listener.log' -t bundlelogs
+  
+[2020-06-20T16:45:37.984Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/AppDeployPreHook/01_configure_xray.sh] : Starting activity...
+[2020-06-20T16:45:38.102Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/AppDeployPreHook/01_configure_xray.sh] : Completed activity.
+[2020-06-20T16:45:38.103Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/AppDeployPreHook/03_configure_proxy.sh] : Starting activity...
+[2020-06-20T16:45:38.290Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/AppDeployPreHook/03_configure_proxy.sh] : Completed activity. Result:
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n nginx -l'/var/log/nginx/*'
+  
+  Executing: /usr/sbin/nginx -t -c /var/elasticbeanstalk/staging/nginx/nginx.conf
+  nginx: the configuration file /var/elasticbeanstalk/staging/nginx/nginx.conf syntax is ok
+  nginx: configuration file /var/elasticbeanstalk/staging/nginx/nginx.conf test is successful
+[2020-06-20T16:45:38.290Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/AppDeployPreHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/pre.
+[2020-06-20T16:45:38.290Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/EbExtensionPostBuild] : Starting activity...
+[2020-06-20T16:45:38.711Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/EbExtensionPostBuild/Infra-EmbeddedPostBuild] : Starting activity...
+[2020-06-20T16:45:38.711Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/EbExtensionPostBuild/Infra-EmbeddedPostBuild] : Completed activity.
+[2020-06-20T16:45:38.730Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/EbExtensionPostBuild] : Completed activity.
+[2020-06-20T16:45:38.730Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/InfraCleanEbextension] : Starting activity...
+[2020-06-20T16:45:38.731Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0/InfraCleanEbextension] : Completed activity. Result:
+  Cleaned ebextensions subdirectories from /var/app/staging.
+[2020-06-20T16:45:38.731Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage0] : Completed activity. Result:
+  Application update - Command CMD-AppDeploy stage 0 completed
+[2020-06-20T16:45:38.731Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1] : Starting activity...
+[2020-06-20T16:45:38.731Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook] : Starting activity...
+[2020-06-20T16:45:38.731Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/01_stop_before_promote.sh] : Starting activity...
+[2020-06-20T16:45:41.460Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/01_stop_before_promote.sh] : Completed activity. Result:
+  Executing: /usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf stop application:*
+  application:application-web-1: stopped
+  Executing: /usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf stop all
+  listener:supervisor_listener: stopped
+  Executing: /sbin/status supervisord
+  supervisord start/running, process 3634
+  Executing: /sbin/stop supervisord
+  supervisord stop/waiting
+[2020-06-20T16:45:41.460Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/01stop_xray.sh] : Starting activity...
+[2020-06-20T16:45:41.586Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/01stop_xray.sh] : Completed activity. Result:
+  Executing: if ( initctl status xray | grep start ); then initctl stop xray; fi
+  
+[2020-06-20T16:45:41.586Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/02start_xray.sh] : Starting activity...
+[2020-06-20T16:45:41.704Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/02start_xray.sh] : Completed activity.
+[2020-06-20T16:45:41.704Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/03_stop_proxy.sh] : Starting activity...
+[2020-06-20T16:45:41.933Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/03_stop_proxy.sh] : Completed activity. Result:
+  Executing: service nginx stop
+  Stopping nginx: [  OK  ]
+[2020-06-20T16:45:41.933Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/05_promote_application.sh] : Starting activity...
+[2020-06-20T16:45:42.060Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/05_promote_application.sh] : Completed activity.
+[2020-06-20T16:45:42.060Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/07_start_application.sh] : Starting activity...
+[2020-06-20T16:45:42.183Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/07_start_application.sh] : Completed activity. Result:
+  Executing: /sbin/start supervisord
+  supervisord start/running, process 4927
+[2020-06-20T16:45:42.183Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/09_start_proxy.sh] : Starting activity...
+[2020-06-20T16:45:44.850Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/09_start_proxy.sh] : Completed activity. Result:
+  Executing: service nginx stop
+  
+  Executing: service nginx start
+  Starting nginx: [  OK  ]
+  Executing: /opt/elasticbeanstalk/bin/healthd-track-pidfile --proxy nginx
+  
+  Executing: /opt/elasticbeanstalk/bin/healthd-configure --appstat-log-path /var/log/nginx/healthd/application.log --appstat-unit sec --appstat-timestamp-on 'completion'
+  
+  Executing: /opt/elasticbeanstalk/bin/healthd-restart
+  
+[2020-06-20T16:45:44.850Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/11_stop_after_promote.sh] : Starting activity...
+[2020-06-20T16:45:45.416Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook/11_stop_after_promote.sh] : Completed activity.
+[2020-06-20T16:45:45.416Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployEnactHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/enact.
+[2020-06-20T16:45:45.417Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployPostHook] : Starting activity...
+[2020-06-20T16:45:45.417Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1/AppDeployPostHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/post.
+[2020-06-20T16:45:45.417Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AppDeployStage1] : Completed activity. Result:
+  Application version switch - Command CMD-AppDeploy stage 1 completed
+[2020-06-20T16:45:45.417Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsAfter] : Starting activity...
+[2020-06-20T16:45:45.417Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsAfter/ConfigLogRotation] : Starting activity...
+[2020-06-20T16:45:45.417Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsAfter/ConfigLogRotation/10-config.sh] : Starting activity...
+[2020-06-20T16:45:45.998Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsAfter/ConfigLogRotation/10-config.sh] : Completed activity. Result:
+  Disabled forced hourly log rotation.
+[2020-06-20T16:45:45.998Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsAfter/ConfigLogRotation] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logpublish/hooks/config.
+[2020-06-20T16:45:45.998Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3/AddonsAfter] : Completed activity.
+[2020-06-20T16:45:45.998Z] INFO  [4749]  - [Application update 02-todo-rest-api-h2-0.0.1-SNAPSHOT@3] : Completed activity. Result:
+  Application update - Command CMD-AppDeploy succeeded
+[2020-06-20T16:50:19.661Z] INFO  [5216]  - [CMD-TailLogs] : Starting activity...
+[2020-06-20T16:50:19.661Z] INFO  [5216]  - [CMD-TailLogs/AddonsBefore] : Starting activity...
+[2020-06-20T16:50:19.661Z] INFO  [5216]  - [CMD-TailLogs/AddonsBefore] : Completed activity.
+[2020-06-20T16:50:19.661Z] INFO  [5216]  - [CMD-TailLogs/TailLogs] : Starting activity...
+[2020-06-20T16:50:19.661Z] INFO  [5216]  - [CMD-TailLogs/TailLogs/TailLogs] : Starting activity...
+[2020-06-20T16:50:19.876Z] INFO  [5216]  - [CMD-TailLogs/TailLogs/TailLogs] : Completed activity.
+[2020-06-20T16:50:19.876Z] INFO  [5216]  - [CMD-TailLogs/TailLogs] : Completed activity. Result:
+  CMD-TailLogs - stage 0 - Command CMD-TailLogs stage 0 completed
+[2020-06-20T16:50:19.876Z] INFO  [5216]  - [CMD-TailLogs/AddonsAfter] : Starting activity...
+[2020-06-20T16:50:19.876Z] INFO  [5216]  - [CMD-TailLogs/AddonsAfter] : Completed activity.
+[2020-06-20T16:50:19.876Z] INFO  [5216]  - [CMD-TailLogs] : Completed activity. Result:
+  CMD-TailLogs - Command CMD-TailLogs succeeded
+[2020-06-20T17:12:56.818Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4] : Starting activity...
+[2020-06-20T17:12:56.818Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsBefore] : Starting activity...
+[2020-06-20T17:12:56.818Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsBefore/ConfigCWLAgent] : Starting activity...
+[2020-06-20T17:12:56.818Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsBefore/ConfigCWLAgent/10-config.sh] : Starting activity...
+[2020-06-20T17:12:56.949Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsBefore/ConfigCWLAgent/10-config.sh] : Completed activity. Result:
+  Log streaming option setting is not specified, ignore cloudwatch logs setup.
+  
+  Disabled log streaming.
+[2020-06-20T17:12:56.949Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsBefore/ConfigCWLAgent] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logstreaming/hooks/config.
+[2020-06-20T17:12:56.949Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsBefore] : Completed activity.
+[2020-06-20T17:12:57.358Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0] : Starting activity...
+[2020-06-20T17:12:57.358Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/DownloadSourceBundle] : Starting activity...
+[2020-06-20T17:12:58.080Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/DownloadSourceBundle] : Completed activity. Result:
+  [2020-06-20T17:12:57.474Z] INFO  [6023]  : Application version will be saved to /opt/elasticbeanstalk/deploy/appsource.
+  [2020-06-20T17:12:57.474Z] INFO  [6023]  : Using manifest cache with deployment ID 4 and serial 4.
+  [2020-06-20T17:12:57.474Z] INFO  [6023]  : Attempting to download application source bundle to: '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+  [2020-06-20T17:12:57.474Z] INFO  [6023]  : Using computed s3 key.
+  [2020-06-20T17:12:57.610Z] INFO  [6023]  : Downloading from bucket 'elasticbeanstalk-us-east-1-719690574295' with key 'resources/environments/e-gd8mdnwbh7/_runtime/_versions/Spring-REST-API/01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT' and version '' to '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+  [2020-06-20T17:12:57.672Z] INFO  [6023]  : Size: 21251332, ETag: "d9174427ada2af30211b9356f13670d1", Metadata: {"environmentid"=>"e-gd8mdnwbh7", "requestid"=>"6760b4a2-72d2-4823-9080-6c60fb516bc9"}.
+  [2020-06-20T17:12:58.070Z] INFO  [6023]  : Downloaded size: 21251332.
+  [2020-06-20T17:12:58.070Z] INFO  [6023]  : Successfully downloaded to '/opt/elasticbeanstalk/deploy/appsource/source_bundle'.
+[2020-06-20T17:12:58.080Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/EbExtensionPreBuild] : Starting activity...
+[2020-06-20T17:12:58.492Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild] : Starting activity...
+[2020-06-20T17:12:58.492Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/EbExtensionPreBuild/Infra-EmbeddedPreBuild] : Completed activity.
+[2020-06-20T17:12:58.510Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/EbExtensionPreBuild] : Completed activity.
+[2020-06-20T17:12:58.510Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/AppDeployPreHook] : Starting activity...
+[2020-06-20T17:12:58.511Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/AppDeployPreHook/01_configure_application.sh] : Starting activity...
+[2020-06-20T17:12:59.150Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/AppDeployPreHook/01_configure_application.sh] : Completed activity. Result:
+  Executing: /usr/bin/unzip -o -d /var/app/staging /opt/elasticbeanstalk/deploy/appsource/source_bundle
+  Archive:  /opt/elasticbeanstalk/deploy/appsource/source_bundle
+     creating: /var/app/staging/META-INF/
+    inflating: /var/app/staging/META-INF/MANIFEST.MF  
+     creating: /var/app/staging/org/
+     creating: /var/app/staging/org/springframework/
+     creating: /var/app/staging/org/springframework/boot/
+     creating: /var/app/staging/org/springframework/boot/loader/
+     creating: /var/app/staging/org/springframework/boot/loader/data/
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$DataInputStream.class  
+     creating: /var/app/staging/org/springframework/boot/loader/jar/
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/AsciiBytes.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/ExecutableArchiveLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/LaunchedURLClassLoader$UseFastConnectionExceptionsEnumeration.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$FileAccess.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarEntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries$EntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/WarLauncher.class  
+     creating: /var/app/staging/org/springframework/boot/loader/util/
+    inflating: /var/app/staging/org/springframework/boot/loader/util/SystemPropertyUtils.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessDataFile.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryFileHeader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/data/RandomAccessData.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/Bytes.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryEndRecord.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/ZipInflaterInputStream.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection$JarEntryName.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarURLConnection.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryParser.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/Handler.class  
+     creating: /var/app/staging/org/springframework/boot/loader/archive/
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive$EntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntryIterator$EntryComparator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$FileEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/ExplodedArchive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive$EntryIterator.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive$JarFileEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/JarFileArchive.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$PrefixMatchingArchiveFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$ArchiveEntryFilter.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher$1.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/PropertiesLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$2.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile$JarFileType.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/archive/Archive$Entry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFile.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/MainMethodRunner.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/JarLauncher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarEntry.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/Launcher.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/LaunchedURLClassLoader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/FileHeader.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/JarFileEntries.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/StringSequence.class  
+    inflating: /var/app/staging/org/springframework/boot/loader/jar/CentralDirectoryVisitor.class  
+     creating: /var/app/staging/BOOT-INF/
+     creating: /var/app/staging/BOOT-INF/classes/
+     creating: /var/app/staging/BOOT-INF/classes/com/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/
+     creating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/
+     creating: /var/app/staging/META-INF/maven/
+     creating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/
+     creating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/01-spring-boot-hello-world-rest-api/
+    inflating: /var/app/staging/BOOT-INF/classes/application.properties  
+    inflating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/01-spring-boot-hello-world-rest-api/pom.xml  
+    inflating: /var/app/staging/META-INF/maven/com.in28minutes.rest.webservices/01-spring-boot-hello-world-rest-api/pom.properties  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/HelloWorldBean.class  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.class  
+    inflating: /var/app/staging/BOOT-INF/classes/com/in28minutes/rest/webservices/restfulwebservices/HelloWorldController.class  
+     creating: /var/app/staging/BOOT-INF/lib/
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-web-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-logging-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/logback-classic-1.2.3.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/logback-core-1.2.3.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/log4j-to-slf4j-2.11.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/log4j-api-2.11.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jul-to-slf4j-1.7.25.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/javax.annotation-api-1.3.2.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/snakeyaml-1.23.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-json-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-databind-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-annotations-2.9.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-core-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-datatype-jdk8-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-datatype-jsr310-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jackson-module-parameter-names-2.9.7.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-starter-tomcat-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-core-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-el-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/tomcat-embed-websocket-9.0.12.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/hibernate-validator-6.0.13.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/validation-api-2.0.1.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jboss-logging-3.3.2.Final.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/classmate-1.4.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-web-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-beans-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-webmvc-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-aop-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-context-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-expression-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-boot-autoconfigure-2.1.0.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/h2-1.4.197.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-api-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-impl-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-runtime-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/jaxb-core-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/txw2-2.3.0.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/istack-commons-runtime-3.0.5.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/stax-ex-1.7.8.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/FastInfoset-1.2.13.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/activation-1.1.1.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/slf4j-api-1.7.25.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-core-5.1.2.RELEASE.jar  
+   extracting: /var/app/staging/BOOT-INF/lib/spring-jcl-5.1.2.RELEASE.jar  
+  FileMagic v0.7.1: compiled magic version [5.21] does not match with shared library magic version [5.37]
+  Executing: HOME=/tmp /opt/elasticbeanstalk/lib/ruby/bin/ruby /opt/elasticbeanstalk/lib/ruby/bin/foreman export supervisord --procfile /var/app/staging/Procfile --root /var/app/current --app application --log /var/log/ --user webapp --template /opt/elasticbeanstalk/private/config/foreman/supervisord --env /var/elasticbeanstalk/staging/elasticbeanstalk.env /var/elasticbeanstalk/staging/supervisor
+  [foreman export] writing: application.conf
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n supervisor -l'/var/log/supervisord.log' -t bundlelogs
+  
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n containerlistener -l'/var/log/eb-container-listener.log' -t bundlelogs
+  
+[2020-06-20T17:12:59.150Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/AppDeployPreHook/01_configure_xray.sh] : Starting activity...
+[2020-06-20T17:12:59.263Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/AppDeployPreHook/01_configure_xray.sh] : Completed activity.
+[2020-06-20T17:12:59.263Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/AppDeployPreHook/03_configure_proxy.sh] : Starting activity...
+[2020-06-20T17:12:59.441Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/AppDeployPreHook/03_configure_proxy.sh] : Completed activity. Result:
+  Executing: /opt/elasticbeanstalk/bin/log-conf -n nginx -l'/var/log/nginx/*'
+  
+  Executing: /usr/sbin/nginx -t -c /var/elasticbeanstalk/staging/nginx/nginx.conf
+  nginx: the configuration file /var/elasticbeanstalk/staging/nginx/nginx.conf syntax is ok
+  nginx: configuration file /var/elasticbeanstalk/staging/nginx/nginx.conf test is successful
+[2020-06-20T17:12:59.442Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/AppDeployPreHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/pre.
+[2020-06-20T17:12:59.442Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/EbExtensionPostBuild] : Starting activity...
+[2020-06-20T17:12:59.855Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/EbExtensionPostBuild/Infra-EmbeddedPostBuild] : Starting activity...
+[2020-06-20T17:12:59.855Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/EbExtensionPostBuild/Infra-EmbeddedPostBuild] : Completed activity.
+[2020-06-20T17:12:59.873Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/EbExtensionPostBuild] : Completed activity.
+[2020-06-20T17:12:59.873Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/InfraCleanEbextension] : Starting activity...
+[2020-06-20T17:12:59.874Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0/InfraCleanEbextension] : Completed activity. Result:
+  Cleaned ebextensions subdirectories from /var/app/staging.
+[2020-06-20T17:12:59.874Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage0] : Completed activity. Result:
+  Application update - Command CMD-AppDeploy stage 0 completed
+[2020-06-20T17:12:59.874Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1] : Starting activity...
+[2020-06-20T17:12:59.874Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook] : Starting activity...
+[2020-06-20T17:12:59.875Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/01_stop_before_promote.sh] : Starting activity...
+[2020-06-20T17:13:02.701Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/01_stop_before_promote.sh] : Completed activity. Result:
+  Executing: /usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf stop application:*
+  application:application-web-1: stopped
+  Executing: /usr/local/bin/supervisorctl -c /etc/supervisor/supervisord.conf stop all
+  listener:supervisor_listener: stopped
+  Executing: /sbin/status supervisord
+  supervisord start/running, process 4927
+  Executing: /sbin/stop supervisord
+  supervisord stop/waiting
+[2020-06-20T17:13:02.701Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/01stop_xray.sh] : Starting activity...
+[2020-06-20T17:13:02.818Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/01stop_xray.sh] : Completed activity. Result:
+  Executing: if ( initctl status xray | grep start ); then initctl stop xray; fi
+  
+[2020-06-20T17:13:02.819Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/02start_xray.sh] : Starting activity...
+[2020-06-20T17:13:02.931Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/02start_xray.sh] : Completed activity.
+[2020-06-20T17:13:02.931Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/03_stop_proxy.sh] : Starting activity...
+[2020-06-20T17:13:03.154Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/03_stop_proxy.sh] : Completed activity. Result:
+  Executing: service nginx stop
+  Stopping nginx: [  OK  ]
+[2020-06-20T17:13:03.154Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/05_promote_application.sh] : Starting activity...
+[2020-06-20T17:13:03.276Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/05_promote_application.sh] : Completed activity.
+[2020-06-20T17:13:03.276Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/07_start_application.sh] : Starting activity...
+[2020-06-20T17:13:03.389Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/07_start_application.sh] : Completed activity. Result:
+  Executing: /sbin/start supervisord
+  supervisord start/running, process 6174
+[2020-06-20T17:13:03.390Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/09_start_proxy.sh] : Starting activity...
+[2020-06-20T17:13:06.037Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/09_start_proxy.sh] : Completed activity. Result:
+  Executing: service nginx stop
+  
+  Executing: service nginx start
+  Starting nginx: [  OK  ]
+  Executing: /opt/elasticbeanstalk/bin/healthd-track-pidfile --proxy nginx
+  
+  Executing: /opt/elasticbeanstalk/bin/healthd-configure --appstat-log-path /var/log/nginx/healthd/application.log --appstat-unit sec --appstat-timestamp-on 'completion'
+  
+  Executing: /opt/elasticbeanstalk/bin/healthd-restart
+  
+[2020-06-20T17:13:06.037Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/11_stop_after_promote.sh] : Starting activity...
+[2020-06-20T17:13:06.602Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook/11_stop_after_promote.sh] : Completed activity.
+[2020-06-20T17:13:06.603Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployEnactHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/enact.
+[2020-06-20T17:13:06.603Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployPostHook] : Starting activity...
+[2020-06-20T17:13:06.603Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1/AppDeployPostHook] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/hooks/appdeploy/post.
+[2020-06-20T17:13:06.603Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AppDeployStage1] : Completed activity. Result:
+  Application version switch - Command CMD-AppDeploy stage 1 completed
+[2020-06-20T17:13:06.603Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsAfter] : Starting activity...
+[2020-06-20T17:13:06.603Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsAfter/ConfigLogRotation] : Starting activity...
+[2020-06-20T17:13:06.603Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsAfter/ConfigLogRotation/10-config.sh] : Starting activity...
+[2020-06-20T17:13:07.219Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsAfter/ConfigLogRotation/10-config.sh] : Completed activity. Result:
+  Disabled forced hourly log rotation.
+[2020-06-20T17:13:07.219Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsAfter/ConfigLogRotation] : Completed activity. Result:
+  Successfully execute hooks in directory /opt/elasticbeanstalk/addons/logpublish/hooks/config.
+[2020-06-20T17:13:07.219Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4/AddonsAfter] : Completed activity.
+[2020-06-20T17:13:07.220Z] INFO  [5979]  - [Application update 01-spring-boot-hello-world-rest-api-0.0.1-SNAPSHOT@4] : Completed activity. Result:
+  Application update - Command CMD-AppDeploy succeeded
+[2020-06-20T17:21:46.808Z] INFO  [6554]  - [CMD-TailLogs] : Starting activity...
+[2020-06-20T17:21:46.808Z] INFO  [6554]  - [CMD-TailLogs/AddonsBefore] : Starting activity...
+[2020-06-20T17:21:46.808Z] INFO  [6554]  - [CMD-TailLogs/AddonsBefore] : Completed activity.
+[2020-06-20T17:21:46.808Z] INFO  [6554]  - [CMD-TailLogs/TailLogs] : Starting activity...
+[2020-06-20T17:21:46.808Z] INFO  [6554]  - [CMD-TailLogs/TailLogs/TailLogs] : Starting activity...
+[2020-06-20T17:21:47.332Z] INFO  [6554]  - [CMD-TailLogs/TailLogs/TailLogs] : Completed activity.
+[2020-06-20T17:21:47.332Z] INFO  [6554]  - [CMD-TailLogs/TailLogs] : Completed activity. Result:
+  CMD-TailLogs - stage 0 - Command CMD-TailLogs stage 0 completed
+[2020-06-20T17:21:47.332Z] INFO  [6554]  - [CMD-TailLogs/AddonsAfter] : Starting activity...
+[2020-06-20T17:21:47.332Z] INFO  [6554]  - [CMD-TailLogs/AddonsAfter] : Completed activity.
+[2020-06-20T17:21:47.332Z] INFO  [6554]  - [CMD-TailLogs] : Completed activity. Result:
+  CMD-TailLogs - Command CMD-TailLogs succeeded
+[2020-06-20T17:22:20.934Z] INFO  [6591]  - [CMD-BundleLogs] : Starting activity...
+[2020-06-20T17:22:20.935Z] INFO  [6591]  - [CMD-BundleLogs/AddonsBefore] : Starting activity...
+[2020-06-20T17:22:20.935Z] INFO  [6591]  - [CMD-BundleLogs/AddonsBefore] : Completed activity.
+[2020-06-20T17:22:20.935Z] INFO  [6591]  - [CMD-BundleLogs/BundleLogs] : Starting activity...
+[2020-06-20T17:22:20.935Z] INFO  [6591]  - [CMD-BundleLogs/BundleLogs/BundleLogs] : Starting activity...
